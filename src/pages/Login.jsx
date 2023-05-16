@@ -36,10 +36,12 @@ export default class Login extends Component {
     };
     if (isLoading) return <Loading />;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login">
         <input
           type="text"
           data-testid="login-name-input"
+          className="input-login"
+          placeholder="qual é o seu nome?"
           name="name"
           value={ name }
           onChange={ this.handleName }
@@ -47,6 +49,7 @@ export default class Login extends Component {
         <button
           data-testid="login-submit-button"
           disabled={ buttonDisabled() }
+          className="button-login"
           onClick={ this.handleClick }
         >
           ENTRAR
