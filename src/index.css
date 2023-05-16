@@ -53,3 +53,8 @@ code {
   background-color: #003BE5;
   color: white;
 }
+
+.button-login:disabled {
+  cursor: default;
+  background-color: #0039e5b2;
+}

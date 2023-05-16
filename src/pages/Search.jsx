@@ -6,7 +6,21 @@ export default class Search extends Component {
     return (
       <div>
         <Header />
-        <div data-testid="page-search" />
+        <div
+          data-testid="page-search"
+        >
+          <input
+            type="text"
+            name=""
+            data-testid="search-artist-input"
+          />
+          <button
+            name=""
+            data-testid="search-artist-button"
+          >
+            asd
+          </button>
+        </div>
       </div>
     );
   }
