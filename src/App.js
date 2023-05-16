@@ -20,14 +20,17 @@ class App extends React.Component {
         <Route
           path="/search"
           component={ Search }
+          exact
         />
         <Route
           path="/album/:id"
           component={ Album }
+          exact
         />
         <Route
           path="/favorites"
           component={ Favorites }
+          exact
         />
         <Route
           path="/profile"
@@ -37,6 +40,7 @@ class App extends React.Component {
         <Route
           path="/profile/edit"
           component={ ProfileEdit }
+          exact
         />
         <Route
           path="*"
