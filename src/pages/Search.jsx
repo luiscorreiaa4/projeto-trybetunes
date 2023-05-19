@@ -23,7 +23,15 @@ export default class Search extends Component {
       isLoading: true,
     });
 
-    const albums = await searchAlbumsAPI(name);
+    const albums = await searchAlbumsAPI(name)
+      .catch((error) => {
+        console.log(error);
+        this.setState({
+          name: '',
+          artist: '',
+          isLoading: false,
+        });
+      });
 
     this.setState({
       name: '',
