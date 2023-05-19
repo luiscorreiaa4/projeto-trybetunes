@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Card from '../components/Card';
+import Loading from '../components/Loading';
 
 export default class Search extends Component {
   state = {
@@ -63,7 +64,7 @@ export default class Search extends Component {
               </button>
             </div>
           )}
-          {isLoading && <p>Carregando...</p>}
+          {isLoading && <Loading />}
         </div>
         <div>
           {artist && !isLoading && (
