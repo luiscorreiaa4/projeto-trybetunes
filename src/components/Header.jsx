@@ -1,12 +1,13 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Loading from './Loading';
+import { Link, NavLink } from 'react-router-dom';
+import { IoSearchOutline, IoStarOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import { getUser } from '../services/userAPI';
+import Logo from '../assets/logo.svg';
+import './Header.css';
 
 export default class Header extends Component {
   state = {
     userName: '',
-    isLoading: true,
   };
 
   componentDidMount() {
@@ -17,19 +18,54 @@ export default class Header extends Component {
     const { name } = await getUser();
     this.setState({
       userName: name,
-      isLoading: false,
     });
   };
 
   render() {
-    const { userName, isLoading } = this.state;
-    if (isLoading) return <Loading />;
+    const { userName } = this.state;
     return (
-      <header data-testid="header-component">
-        <p data-testid="header-user-name">{ userName }</p>
-        <div><Link to="/search" data-testid="link-to-search">Pesquisar</Link></div>
-        <div><Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link></div>
-        <div><Link to="/profile" data-testid="link-to-profile">Perfil</Link></div>
+      <header data-testid="header-component" className="Header">
+        <div className="header-top">
+          <Link to="/search">
+            {' '}
+            <img src={ Logo } alt="TrybeTunes" />
+          </Link>
+          <Link to="/profile">
+            <h4 className="suco" data-testid="header-user-name">
+              <IoPersonCircleOutline />
+              { userName }
+            </h4>
+          </Link>
+        </div>
+        <nav className="menu">
+          <NavLink
+            className="menu-item"
+            activeClassName="active"
+            to="/search"
+            data-testid="link-to-search"
+          >
+            <IoSearchOutline />
+            Pesquisar
+          </NavLink>
+          <NavLink
+            className="menu-item"
+            activeClassName="active"
+            to="/favorites"
+            data-testid="link-to-favorites"
+          >
+            <IoStarOutline />
+            Favoritas
+          </NavLink>
+          <NavLink
+            className="menu-item"
+            activeClassName="active"
+            to="/profile"
+            data-testid="link-to-profile"
+          >
+            <IoPersonCircleOutline />
+            Perfil
+          </NavLink>
+        </nav>
       </header>
     );
   }

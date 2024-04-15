@@ -1,0 +1,64 @@
+.Header {
+  background-color: #24292e;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
+.header-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.suco {
+  font-weight: bold;
+  margin-left: 20px;
+  color: #ffffff;
+}
+
+.Header img {
+  max-width: 100%;
+  width: 100px;
+}
+
+.menu {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.menu-item {
+  margin: 0 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.menu-item img {
+  margin-right: 8px;
+}
+
+.active {
+  color: #acb6e5;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover, .menu-item:active {
+  color: #acb6e5;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
