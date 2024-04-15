@@ -1,7 +1,9 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
+import Logo from '../assets/logo.svg';
 import Loading from '../components/Loading';
+import './Login.css';
 
 export default class Login extends Component {
   state = {
@@ -16,16 +18,18 @@ export default class Login extends Component {
   handleClick = async () => {
     const { name } = this.state;
     const { history } = this.props;
-    this.setState({
-      isLoading: true,
-    });
-    await createUser({
-      name,
-    });
-    this.setState({
-      isLoading: false,
-    });
-    history.push('./search');
+    this.setState({ isLoading: true });
+    await createUser({ name });
+    this.setState({ isLoading: false });
+    history.push('/search');
+  };
+
+  limparPlacholder = ({ target }) => {
+    target.placeholder = '';
+  };
+
+  adicionarPlaceholder = ({ target }, placeHolder) => {
+    target.placeholder = placeHolder;
   };
 
   render() {
@@ -37,14 +41,17 @@ export default class Login extends Component {
     if (isLoading) return <Loading />;
     return (
       <div data-testid="page-login" className="login">
+        <img src={ Logo } alt="Trybe Tunes" />
         <input
           type="text"
           data-testid="login-name-input"
           className="input-login"
-          placeholder="qual é o seu nome?"
+          placeholder="Digite seu nome"
           name="name"
           value={ name }
           onChange={ this.handleName }
+          onFocus={ this.limparPlacholder }
+          onBlur={ (e) => this.adicionarPlaceholder(e, 'Digite seu nome') }
         />
         <button
           data-testid="login-submit-button"

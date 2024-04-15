@@ -18,7 +18,7 @@ code {
   justify-content: center;
 }
 
-.login {
+/* .login {
   font-size: larger;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
@@ -57,4 +57,4 @@ code {
 .button-login:disabled {
   cursor: default;
   background-color: #0039e5b2;
-}
+} */
