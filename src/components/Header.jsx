@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoSearchOutline, IoStarOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import { getUser } from '../services/userAPI';
 import Logo from '../assets/logo.svg';
-import './Header.css';
+import '../style/Header.css';
 
 export default class Header extends Component {
   state = {

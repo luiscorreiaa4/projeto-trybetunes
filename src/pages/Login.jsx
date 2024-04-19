@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Logo from '../assets/logo.svg';
 import Loading from '../components/Loading';
-import './Login.css';
+import '../style/Login.css';
 
 export default class Login extends Component {
   state = {

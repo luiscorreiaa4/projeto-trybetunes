@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css';
+import '../style/Loading.css';
 
 export default function Loading() {
   return (
@@ -14,7 +14,6 @@ export default function Loading() {
         <div />
         <div />
       </div>
-      <h3>Carregando...</h3>
     </section>
   );
 }

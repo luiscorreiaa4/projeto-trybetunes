@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Card from '../components/Card';
 import Loading from '../components/Loading';
+import '../style/Search.css';
 
 export default class Search extends Component {
   state = {
@@ -41,6 +42,14 @@ export default class Search extends Component {
     });
   };
 
+  limparPlacholder = ({ target }) => {
+    target.placeholder = '';
+  };
+
+  adicionaPlaceholder = ({ target }, placeHolder) => {
+    target.placeholder = placeHolder;
+  };
+
   render() {
     const { name, isLoading, artist, albums } = this.state;
 
@@ -50,20 +59,24 @@ export default class Search extends Component {
     };
 
     return (
-      <main>
+      <main className="page-search-container">
         <Header />
         <div>
           {!isLoading && (
-            <div data-testid="page-search">
+            <div data-testid="page-search" className="page-search">
               <input
+                className="input-search"
                 type="text"
                 name="name"
-                placeholder="Nome do Artista"
+                placeholder="Pesquise álbuns, artistas"
+                onFocus={ this.limparPlacholder }
+                onBlur={ (e) => this.adicionaPlaceholder(e, 'Pesquise álbuns, artistas') }
                 data-testid="search-artist-input"
                 onChange={ this.handleName }
                 value={ name }
               />
               <button
+                className="button-search"
                 data-testid="search-artist-button"
                 disabled={ buttonDisabled() }
                 onClick={ this.handleClick }
@@ -74,15 +87,15 @@ export default class Search extends Component {
           )}
           {isLoading && <Loading />}
         </div>
-        <div>
+        <div className="content-search">
           {artist && !isLoading && (
-            <h3>
+            <h1>
               Resultado de álbuns de:
               {' '}
               {artist}
-            </h3>
+            </h1>
           )}
-          <div>
+          <div className="result">
             {albums.map((e) => (
               <Card
                 key={ e.collectionId }
