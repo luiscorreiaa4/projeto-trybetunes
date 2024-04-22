@@ -67,17 +67,18 @@ a:link, a:visited {
 .profile-pic {
   border-radius: 50%;
   height: 65px;
-background-color: #ffffff;
+  background-color: #ffffff;
   width: 65px;
 }
 
 .active {
-  color: #000000;
+  color: #acb6e5;
   transition: color 0.3s ease;
+  font-weight: bold;
 }
 
-.menu-item:hover, .menu-item:active {
-  color: #000000;
-  transition: color 0.3s ease;
+.menu-item:hover{
+  color: #74ebd5;
+  transition: color 0.3s ease-in-out;
   cursor: pointer;
 }

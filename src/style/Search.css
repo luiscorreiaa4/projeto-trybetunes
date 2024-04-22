@@ -23,6 +23,14 @@
   width: 100%;
 }
 
+.inputs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* width: 100%; */
+  padding: 20px;
+}
+
 .input-search {
   width: 100%;
   max-width: 400px;
@@ -80,13 +88,25 @@
   margin: 0 auto;
 }
 
+.content-before {
+  height: 100vh;
+  width: 100%;
+  background-color: #eff3f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  color: #33333379;
+  padding-bottom: 500px;
+}
+
 .nameSearched {
   color: #003be5;
   font-size: 24px;
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: 300;
   margin: 25px 0;
-  font-family: sans-serif;
 }
 
 .result {
