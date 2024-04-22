@@ -61,7 +61,7 @@ export default class Search extends Component {
     return (
       <main className="page-search-container">
         <Header />
-        <div>
+        <div className="page-search-father">
           {!isLoading && (
             <div data-testid="page-search" className="page-search">
               <input
@@ -89,7 +89,7 @@ export default class Search extends Component {
         </div>
         <div className="content-search">
           {artist && !isLoading && (
-            <h1>
+            <h1 className="nameSearched">
               Resultado de álbuns de:
               {' '}
               {artist}
@@ -101,6 +101,7 @@ export default class Search extends Component {
                 key={ e.collectionId }
                 name={ e.collectionName }
                 imgUrl={ e.artworkUrl100 }
+                artist={ e.artistName }
                 link={ `/album/${e.collectionId}` }
                 collectionId={ e.collectionId }
               />

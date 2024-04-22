@@ -38,30 +38,34 @@ export default class Login extends Component {
       const MIN_LENGTH = 3;
       return name.length < MIN_LENGTH;
     };
-    if (isLoading) return <Loading />;
     return (
-      <div data-testid="page-login" className="login">
-        <img src={ Logo } alt="Trybe Tunes" />
-        <input
-          type="text"
-          data-testid="login-name-input"
-          className="input-login"
-          placeholder="Digite seu nome"
-          name="name"
-          value={ name }
-          onChange={ this.handleName }
-          onFocus={ this.limparPlacholder }
-          onBlur={ (e) => this.adicionarPlaceholder(e, 'Digite seu nome') }
-        />
-        <button
-          data-testid="login-submit-button"
-          disabled={ buttonDisabled() }
-          className="button-login"
-          onClick={ this.handleClick }
-        >
-          ENTRAR
-        </button>
-      </div>
+      <main className="mainLogin">
+        {!isLoading && (
+          <div className="login">
+            <img src={ Logo } alt="Trybe Tunes" />
+            <input
+              type="text"
+              data-testid="login-name-input"
+              className="input-login"
+              placeholder="Digite seu nome"
+              name="name"
+              value={ name }
+              onChange={ this.handleName }
+              onFocus={ this.limparPlacholder }
+              onBlur={ (e) => this.adicionarPlaceholder(e, 'Digite seu nome') }
+            />
+            <button
+              data-testid="login-submit-button"
+              disabled={ buttonDisabled() }
+              className="button-login"
+              onClick={ this.handleClick }
+            >
+              ENTRAR
+            </button>
+          </div>
+        )}
+        {isLoading && <Loading />}
+      </main>
     );
   }
 }

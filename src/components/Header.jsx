@@ -3,11 +3,14 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoSearchOutline, IoStarOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import { getUser } from '../services/userAPI';
 import Logo from '../assets/logo.svg';
+import Loading from './Loading';
 import '../style/Header.css';
 
 export default class Header extends Component {
   state = {
     userName: '',
+    profilePic: 'https://lh5.googleusercontent.com/-ScnXlu8ypiI/AAAAAAAAAAI/AAAAAAAAACE/UizJ7lvhvlE/photo.jpg',
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -15,28 +18,32 @@ export default class Header extends Component {
   }
 
   getName = async () => {
-    const { name } = await getUser();
     this.setState({
-      userName: name,
+      isLoading: true,
     });
+    const { name, image } = await getUser();
+    if (image) {
+      this.setState({
+        userName: name,
+        profilePic: image,
+        isLoading: false,
+      });
+    } else {
+      this.setState({
+        userName: name,
+        isLoading: false,
+      });
+    }
   };
 
   render() {
-    const { userName } = this.state;
+    const { userName, profilePic, isLoading } = this.state;
     return (
       <header data-testid="header-component" className="Header">
-        <div className="header-top">
-          <Link to="/search">
-            {' '}
-            <img src={ Logo } alt="TrybeTunes" />
-          </Link>
-          <Link to="/profile">
-            <h4 className="suco" data-testid="header-user-name">
-              <IoPersonCircleOutline />
-              { userName }
-            </h4>
-          </Link>
-        </div>
+        <Link to="/search">
+          {' '}
+          <img className="logo" src={ Logo } alt="TrybeTunes" />
+        </Link>
         <nav className="menu">
           <NavLink
             className="menu-item"
@@ -66,6 +73,20 @@ export default class Header extends Component {
             Perfil
           </NavLink>
         </nav>
+        {!isLoading && (
+          <Link to="/profile" className="usr">
+            <img
+              className="profile-pic"
+              src={ profilePic }
+              alt="Profile"
+              data-testid="header-profile-picture"
+            />
+            <h4 className="suco" data-testid="header-user-name">
+              { userName }
+            </h4>
+          </Link>
+        )}
+        {isLoading && <Loading />}
       </header>
     );
   }
