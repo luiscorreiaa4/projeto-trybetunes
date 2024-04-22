@@ -61,9 +61,9 @@ export default class Search extends Component {
     return (
       <main className="page-search-container">
         <Header />
-        <div className="page-search-father">
+        <div className="page-search">
           {!isLoading && (
-            <div data-testid="page-search" className="page-search">
+            <div data-testid="page-search">
               <input
                 className="input-search"
                 type="text"
