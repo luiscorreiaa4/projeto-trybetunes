@@ -68,17 +68,17 @@ export default class Search extends Component {
               type="text"
               name="name"
               placeholder="Pesquise álbuns, artistas"
-              onFocus={this.limparPlaceholder}
-              onBlur={(e) => this.adicionarPlaceholder(e, 'Pesquise álbuns, artistas')}
+              onFocus={ this.limparPlaceholder }
+              onBlur={ (e) => this.adicionarPlaceholder(e, 'Pesquise álbuns, artistas') }
               data-testid="search-artist-input"
-              onChange={this.handleName}
-              value={name}
+              onChange={ this.handleName }
+              value={ name }
             />
             <button
               className="button-search"
               data-testid="search-artist-button"
-              disabled={buttonDisabled()}
-              onClick={this.handleClick}
+              disabled={ buttonDisabled() }
+              onClick={ this.handleClick }
             >
               Procurar
             </button>
@@ -93,17 +93,19 @@ export default class Search extends Component {
         {artist && !isLoading && ( // Renderiza a div "content-search" se existirem álbuns
           <div className="content-search">
             <h1 className="nameSearched">
-              Resultado de álbuns de: {artist}
+              Resultado de álbuns de:
+              {' '}
+              {artist}
             </h1>
             <div className="result">
               {albums.map((e) => (
                 <Card
-                  key={e.collectionId}
-                  name={e.collectionName}
-                  imgUrl={e.artworkUrl100}
-                  artist={e.artistName}
-                  link={`/album/${e.collectionId}`}
-                  collectionId={e.collectionId}
+                  key={ e.collectionId }
+                  name={ e.collectionName }
+                  imgUrl={ e.artworkUrl100 }
+                  artist={ e.artistName }
+                  link={ `/album/${e.collectionId}` }
+                  collectionId={ e.collectionId }
                 />
               ))}
               {albums.length === 0 && (
