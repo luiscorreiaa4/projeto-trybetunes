@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
-import Loading from './Loading';
+import { IoHeart, IoHeartOutline } from 'react-icons/io5';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import '../style/MusicCard.css';
 
 export default class MusicCard extends Component {
   state = {
-    isLoading: false,
     checked: false,
   };
 
@@ -21,47 +21,58 @@ export default class MusicCard extends Component {
     }
   }
 
-  handleFavorite = async ({ target }) => {
-    this.setState({
-      isLoading: true,
-    });
+  handleFavorite = async () => {
     const { track } = this.props;
+    const { checked } = this.state;
 
-    if (target.checked) {
-      await addSong(track);
+    try {
+      if (checked) {
+        await removeSong(track);
+      } else {
+        await addSong(track);
+      }
+
       this.setState({
-        checked: true,
+        checked: !checked,
       });
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
     }
-    this.setState({
-      isLoading: false,
-    });
   };
 
   render() {
-    const { track } = this.props;
-    const { checked, isLoading } = this.state;
+    const { track, artistName } = this.props;
+    const { checked } = this.state;
     const { trackName, previewUrl, trackId } = track;
-    if (isLoading) return <Loading />;
     return (
-      <div>
-        <h4>{ trackName }</h4>
-        <audio
-          src={ previewUrl }
-          data-testid="audio-component"
-          controls
-        >
-          <track kind="captions" />
-        </audio>
-        <label>
+      <div className="player">
+        <div className="name-and-artist">
+          <h4 className="trackName">{trackName}</h4>
+          <h5 className="artistName">{artistName}</h5>
+        </div>
+        <div className="audio-and-favorite">
+          <audio
+            src={ previewUrl }
+            data-testid="audio-component"
+            controls
+            className="audio"
+          >
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            <code>audio</code>
+            .
+          </audio>
           <input
             type="checkbox"
-            data-testid={ `checkbox-music-${trackId}` }
-            name="favorite"
+            id={ `checkbox-music-${trackId}` }
+            className="favorite visually-hidden"
             onChange={ this.handleFavorite }
             checked={ checked }
           />
-        </label>
+          <label htmlFor={ `checkbox-music-${trackId}` }>
+            { checked ? <IoHeart /> : <IoHeartOutline /> }
+          </label>
+        </div>
       </div>
     );
   }
@@ -73,5 +84,6 @@ MusicCard.propTypes = {
     trackName: PropTypes.string,
     trackId: PropTypes.number,
   }).isRequired,
+  artistName: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
 };

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
-import Loading from '../components/Loading';
+// import Loading from '../components/Loading';
+import '../style/Album.css';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 export default class Album extends Component {
@@ -48,29 +49,32 @@ export default class Album extends Component {
   };
 
   render() {
-    const { name, album, tracks, isLoading, imgUrl, favoriteSongs } = this.state;
+    const { name, album, tracks, imgUrl, favoriteSongs } = this.state;
     return (
-      <main>
+      <>
         <Header />
-        <div data-testid="page-album">
-          <img src={ imgUrl } alt={ album } />
-          <h2 data-testid="album-name">{ album }</h2>
-          <p data-testid="artist-name">{ name }</p>
-        </div>
-        <div>
-          {
-            tracks.map((e) => (
-              <MusicCard
-                key={ e.trackId }
-                track={ e }
-                checked={ favoriteSongs
-                  .some((song) => Number(song.trackId) === Number(e.trackId)) }
-              />
-            ))
-          }
-        </div>
-        {isLoading && <Loading />}
-      </main>
+        <main className="album-container">
+          <div data-testid="page-album" className="page-album">
+            <img src={ imgUrl } alt={ album } className="album-image"/>
+            <div className="album-data">
+              <h2 data-testid="album-name" className="album-name">{ album }</h2>
+              <p data-testid="artist-name" className="artist-name">{ name }</p>
+            </div>
+          </div>
+          <div className="content-album">
+            {
+              tracks.map((e) => (
+                <MusicCard
+                  key={ e.trackId }
+                  track={ e }
+                  checked={ favoriteSongs
+                    .some((song) => Number(song.trackId) === Number(e.trackId)) }
+                />
+              ))
+            }
+          </div>
+        </main>
+      </>
     );
   }
 }

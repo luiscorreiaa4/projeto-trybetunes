@@ -1,0 +1,72 @@
+.player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+}
+
+.name-and-artist{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.artistName {
+  font-size: 0.7em;
+  color: #666;
+  font-style: italic;
+}
+
+.audio-and-favorite {
+  display: flex;
+  align-items: center;
+}
+
+.player h4 {
+  margin: 0;
+}
+
+.trackName {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #333;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.audio {
+  margin-right: 10px;
+}
+
+input[type="checkbox"] + label {
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label > svg {
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .player {
+    flex-direction: column; /* Empilha os elementos verticalmente em telas menores */
+  }
+}

@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.album-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15%;
+  width: 85%;
+  background-color: #eff3f9;
+}
+
+.page-album {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  height: 240px;
+  position: initial;
+  top: 0;
+  width: 100%;
+}
+
+.album-data {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  margin-left: 22%;
+  margin-top: 8%;
+}
+
+.album-name {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.artist-name {
+  color: #666;
+  font-size: 1em;
+  font-style: italic;
+  /* text-align: left; */
+}
+
+.album-image {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  height: 200px;
+  margin-left: 5%;
+  margin-top: 12%;
+  position: absolute;
+  width: 200px;
+}
+
+.content-album {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: space-around;
+}
