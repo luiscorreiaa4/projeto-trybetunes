@@ -62,16 +62,28 @@ export default class Profile extends Component {
             </div>
             <div className="profile-body-container">
               <div className="profile-body">
-                <h4 data-testid="field">Nome</h4>
-                <p data-testid="profile-name">{ userName }</p>
-                <h4 data-testid="field">Email</h4>
-                <p data-testid="profile-email">{ email }</p>
-                <h4 data-testid="field">Descrição</h4>
-                <p data-testid="profile-description">{ description }</p>
+                <div>
+                  <h2 className="field">Nome</h2>
+                  <p data-testid="profile-name">
+                    {userName || 'Cristiano Ronaldo'}
+                  </p>
+                </div>
+                <div>
+                  <h2 className="field">Email</h2>
+                  <p data-testid="profile-email">
+                    {email || 'Adicione seu Email'}
+                  </p>
+                </div>
+                <div>
+                  <h2 className="field">Descrição</h2>
+                  <p data-testid="profile-description">
+                    {description || 'Crie sua descrição'}
+                  </p>
+                </div>
                 <button
                   type="button"
                   onClick={ this.handleEdit }
-                  data-testid="profile-edit-button"
+                  className="profile-edit-button"
                 >
                   Editar Perfil
                 </button>
