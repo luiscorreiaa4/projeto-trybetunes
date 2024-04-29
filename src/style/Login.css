@@ -53,7 +53,7 @@
 }
 
 .input-login::placeholder {
-  color: #0039e2;
+  color: rgba(0, 57, 226, 0.8);
 }
 
 .button-login {
