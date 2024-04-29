@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
-import Loading from '../components/Loading';
 import '../style/ProfileEdit.css';
 
 export default class ProfileEdit extends Component {
@@ -11,13 +11,9 @@ export default class ProfileEdit extends Component {
     profilePic: 'https://lh5.googleusercontent.com/-ScnXlu8ypiI/AAAAAAAAAAI/AAAAAAAAACE/UizJ7lvhvlE/photo.jpg',
     email: '',
     description: '',
-    isLoading: false,
   };
 
   componentDidMount() {
-    this.setState({
-      isLoading: true,
-    });
     this.getAccount();
   }
 
@@ -48,8 +44,7 @@ export default class ProfileEdit extends Component {
     if (userName.length <= magicNumber) return false;
     if (description.length <= magicNumber) return false;
     if (profilePic.length <= magicNumber) return false;
-    if (!emailRegex.test(email)) return false;
-    return true;
+    return emailRegex.test(email);
   };
 
   handleChange = ({ target }) => {
@@ -62,7 +57,11 @@ export default class ProfileEdit extends Component {
   handleSave = async () => {
     const { history } = this.props;
     if (!this.validateForm()) {
-      alert('Preencha os campos corretamente.');
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Preencha os campos corretamente.',
+        icon: 'warning',
+      });
       return;
     }
     const { userName, email, description, profilePic } = this.state;
@@ -138,7 +137,7 @@ export default class ProfileEdit extends Component {
               <button
                 type="button"
                 className="profile-save-button"
-                onClick={this.handleSave}
+                onClick={ this.handleSave }
               >
                 Salvar Perfil
               </button>
@@ -149,3 +148,9 @@ export default class ProfileEdit extends Component {
     );
   }
 }
+
+ProfileEdit.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
