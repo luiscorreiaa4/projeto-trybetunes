@@ -42,6 +42,12 @@ export default class Search extends Component {
     });
   };
 
+  handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.handleClick();
+    }
+  };
+
   limparPlaceholder = ({ target }) => {
     target.placeholder = '';
   };
@@ -72,6 +78,7 @@ export default class Search extends Component {
               onBlur={ (e) => this.adicionarPlaceholder(e, 'Pesquise álbuns, artistas') }
               data-testid="search-artist-input"
               onChange={ this.handleName }
+              onKeyPress={ this.handleKeyPress } // Adicionando evento de teclado para o Enter
               value={ name }
             />
             <button
@@ -85,12 +92,12 @@ export default class Search extends Component {
           </div>
         </div>
         {isLoading && <Loading />}
-        {albums.length === 0 && !isLoading && ( // Adiciona o texto quando não há resultados
+        {albums.length === 0 && !isLoading && (
           <div className="content-before">
             <h1>Qual artista está procurando hoje?</h1>
           </div>
         )}
-        {artist && !isLoading && ( // Renderiza a div "content-search" se existirem álbuns
+        {artist && !isLoading && (
           <div className="content-search">
             <h1 className="nameSearched">
               Resultado de álbuns de:
@@ -108,9 +115,7 @@ export default class Search extends Component {
                   collectionId={ e.collectionId }
                 />
               ))}
-              {albums.length === 0 && (
-                <p>Nenhum álbum foi encontrado</p>
-              )}
+              {albums.length === 0 && <p>Nenhum álbum foi encontrado</p>}
             </div>
           </div>
         )}

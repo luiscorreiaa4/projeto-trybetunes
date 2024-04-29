@@ -1,18 +1,17 @@
 .Header {
+  align-items: center;
   background-color: white;
   border-bottom: 1px solid #e1e1e1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 10px;
+  font-family: Roboto , sans-serif;
   height: 100%;
-  width: 15%;
   justify-content: space-between;
+  left: 0;
   padding: 0 40px;
   position: fixed;
   top: 0;
-  left: 0;
-  font-family: 'Roboto', sans-serif;
+  width: 15%;
 }
 
 a:link, a:visited {
@@ -35,51 +34,51 @@ a:link, a:visited {
 }
 
 .menu {
-  display: flex;
   align-items: flex-start;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 80%;
 }
 
 .menu-item {
-  margin: 0 30px;
   color: #444955;
-  font-weight: bold;
   display: flex;
   font-family: Epilogue , sans-serif;
   font-size: 16px;
   font-weight: 300;
+  margin: 0 30px;
   margin-bottom: 30px;
-  width: 100%;
   margin-left: 20px;
+  width: 100%;
 }
 
 .active {
   color: #8b9be2;
-  transition: color 0.3s ease;
+
   /* border-left: 2px solid #acb6e5; */
-  font-weight: bold;
+  font-weight: 700;
+  transition: color 0.3s ease;
 }
 
-.menu-item:hover{
+.menu-item:hover {
   color: #acb6e5;
-  transition: color 0.3s ease-in-out;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
 }
 
 .usr {
   align-items: center;
   display: flex;
-  margin-bottom: 40px;
   justify-content: flex-start;
+  margin-bottom: 40px;
   padding: 10px 0;
   width: 100%;
 }
 
 .profile-pic {
+  background-color: white;
   border-radius: 50%;
   height: 65px;
-  background-color: #ffffff;
   width: 65px;
 }

@@ -1,33 +1,33 @@
 .player {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top: 15px;
+  padding: 10px;
+  width: 100%;
 }
 
-.name-and-artist{
+.name-and-artist {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
   margin-left: 15px;
 }
 
 .artistName {
-  font-size: 0.7em;
   color: #666;
+  font-size: 0.7em;
   font-style: italic;
 }
 
 .audio-and-favorite {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .player h4 {
@@ -35,37 +35,38 @@
 }
 
 .trackName {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
   color: #333;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
 }
 
 .visually-hidden {
-  position: absolute;
   left: -9999px;
+  position: absolute;
 }
 
 .audio {
   margin-right: 10px;
 }
 
-input[type="checkbox"] + label {
+.favorite + label {
+  cursor: pointer;
   display: inline-block;
   font-size: 24px;
-  cursor: pointer;
   margin-left: auto;
 }
 
-input[type="checkbox"] {
+.favorite {
   display: none;
 }
 
-input[type="checkbox"] + label > svg {
+.favorite + label > svg {
   vertical-align: middle;
 }
 
-@media (max-width: 768px) {
+@media ( max-width : 768px ) {
+
   .player {
     flex-direction: column; /* Empilha os elementos verticalmente em telas menores */
   }
